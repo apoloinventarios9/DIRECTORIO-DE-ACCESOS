@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel Fajardo - Accesos Rápidos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #22304a;
+            --secondary-color: #1abc9c;
+            --accent-color: #e74c3c;
+            --light-color: #f8fafc;
+            --dark-color: #1a2233;
+            --text-color: #22304a;
+            --shadow: 0 8px 32px rgba(34, 48, 74, 0.12);
+            --transition: all 0.25s cubic-bezier(.4,0,.2,1);
+            --radius: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(120deg, #e0e7ef 0%, #f8fafc 60%, #d1e7e0 100%);
+            color: var(--text-color);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 3vw 0;
+        }
+
+        .container {
+            background: rgba(255,255,255,0.98);
+            width: 100%;
+            max-width: 600px;
+            margin: 2.5rem 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 3rem 2.5rem 2.5rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .container::before,
+        .container::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .container::before {
+            top: -80px; left: -80px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, var(--secondary-color) 0%, transparent 80%);
+            opacity: 0.13;
+        }
+        .container::after {
+            bottom: -80px; right: -80px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 80%);
+            opacity: 0.10;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color) 60%, var(--primary-color) 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 auto 1.1rem;
+            box-shadow: 0 4px 18px rgba(26,34,51,0.10);
+            border: 5px solid #fff;
+            letter-spacing: 2px;
+            transition: box-shadow 0.3s;
+        }
+        .profile:hover {
+            box-shadow: 0 8px 32px rgba(26,34,51,0.18);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .description {
+            color: #4a5a6a;
+            opacity: 0.92;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .link-item {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 16px rgba(34, 48, 74, 0.08);
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border-left: 6px solid var(--secondary-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .link-item:nth-child(2) { border-left-color: var(--accent-color); }
+        .link-item:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 36px rgba(34, 48, 74, 0.15);
+            border-left-width: 10px;
+        }
+
+        .link-item h3 {
+            color: var(--primary-color);
+            font-size: 1.13rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .link-item p {
+            color: #4a5a6a;
+            opacity: 0.85;
+            font-size: 1rem;
+            margin-bottom: 0.7rem;
+            flex-grow: 1;
+        }
+
+        .link-item a {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--secondary-color) 60%, var(--primary-color) 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(26,34,51,0.09);
+            transition: var(--transition);
+            border: none;
+            outline: none;
+        }
+        .link-item a:hover {
+            background: linear-gradient(90deg, var(--primary-color) 60%, var(--secondary-color) 100%);
+            color: #fff;
+            transform: scale(1.06);
+            box-shadow: 0 4px 18px rgba(26,34,51,0.16);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            color: #4a5a6a;
+            opacity: 0.7;
+            font-size: 1rem;
+            z-index: 1;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                max-width: 90vw;
+                padding: 2rem 1.2rem 1.5rem 1.2rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+                max-width: 99vw;
+                min-height: unset;
+            }
+            .profile {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+            .link-item {
+                padding: 0.9rem 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile">MF</div>
+            <h1>Dpto. Inventarios</h1>
+            <p class="title">Analista de Inventarios</p>
+            <p class="description">Accesos rápidos a las herramientas y aplicativos del departamento de inventarios</p>
+        </header>
+        <div class="links-container">
+            <!-- Link 1 - Aplicativo para Toma de Inventario -->
+            <div class="link-item">
+                <h3>Toma de Inventario</h3>
+                <p>Sistema web para realizar el conteo y registro de productos en almacén</p>
+                <a href="#" target="_blank">Acceder</a>
+            </div>
+            <!-- Link 2 - Aplicativo para Revisión de Guías -->
+            <div class="link-item">
+                <h3>Revisión de Guías</h3>
+                <p>Plataforma para verificar y validar guías de remisión y documentos de transporte</p>
+                <a href="https://apoloinventarios9.github.io/REPORTE_GUIAS/" target="_blank">Acceder</a>
+            </div>
+            <!-- Espacios para 8 links adicionales -->
+            <div class="link-item">
+                <h3>Ingresa título</h3>
+                <p>Descripción breve del link o aplicación</p>
+                <a href="#" target="_blank">Ingresa link de dirección</a>
+            </div>
+            <div class="link-item">
+                <h3>Ingresa título</h3>
+                <p>Descripción breve del link o aplicación</p>
+                <a href="#" target="_blank">Ingresa link de dirección</a>
+            </div>
+            <div class="link-item">
+                <h3>Ingresa título</h3>
+                <p>Descripción breve del link o aplicación</p>
+                <a href="#" target="_blank">Ingresa link de dirección</a>
+            </div>
+            <div class="link-item">
+                <h3>Ingresa título</h3>
+                <p>Descripción breve del link o aplicación</p>
+                <a href="#" target="_blank">Ingresa link de dirección</a>
+            </div>
+            <div class="link-item">
+                <h3>Ingresa título</h3>
+                <p>Descripción breve del link o aplicación</p>
+                <a href="#" target="_blank">Ingresa link de dirección</a>
+            </div>
+            <div class="link-item">
+                <h3>Ingresa título</h3>
+                <p>Descripción breve del link o aplicación</p>
+                <a href="#" target="_blank">Ingresa link de dirección</a>
+            </div>
+            <div class="link-item">
+                <h3>Ingresa título</h3>
+                <p>Descripción breve del link o aplicación</p>
+                <a href="#" target="_blank">Ingresa link de dirección</a>
+            </div>
+            <div class="link-item">
+                <h3>Ingresa título</h3>
+                <p>Descripción breve del link o aplicación</p>
+                <a href="#" target="_blank">Ingresa link de dirección</a>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 Miguel Fajardo - Analista de Inventarios</p>
+        </footer>
+    </div>
+    <script>
+        // Oculta los apartados de links vacíos (de ejemplo)
+        document.querySelectorAll('.link-item').forEach(function(item) {
+            const h3 = item.querySelector('h3');
+            const a = item.querySelector('a');
+            if (
+                h3 && h3.textContent.trim() === 'Ingresa título' ||
+                a && a.textContent.trim() === 'Ingresa link de dirección'
+            ) {
+                item.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
